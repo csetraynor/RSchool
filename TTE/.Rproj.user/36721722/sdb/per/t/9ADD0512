@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#check path .libPaths()\nlibrary(lme4)\nlibrary(nlme)\nlibrary(JM)\n\n#function lme from nlme\n\ndata(aids, package = 'JM')\n\n#random intercepts model\naids[aids$patient %in% c(1,2), c('patient','CD4', 'obstime')]\n\nlmeFit.int <-  lme(CD4 ~ obstime, random =~1 | patient, data = aids)\nsummary(lmeFit.int)\n\nmargCov.int <- getVarCov(lmeFit.int, individuals = 12, type = 'marginal')\nmargCov.int\ncov2cor(margCov.int[[1]])\n\n#random intercepts and random slopes model\nlmeFit.slp <-  lme(CD4 ~ obstime, random =~ obstime | patient, data = aids)\nsummary(lmeFit.slp)\nmargCov.slp <- getVarCov(lmeFit.slp, individuals = 12, type = 'marginal')\nmargCov.slp\ncov2cor(margCov.slp[[1]])\n",
+    "created" : 1512050694386.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3068569863",
+    "id" : "9ADD0512",
+    "lastKnownWriteTime" : 1512051872,
+    "last_content_update" : 1512051872957,
+    "path" : "C:/RFactory/RJointModelsTTE/TTE/longitudinal data analysis.R",
+    "project_path" : "longitudinal data analysis.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

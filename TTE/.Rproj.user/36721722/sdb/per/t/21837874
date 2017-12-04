@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#check path .libPaths()\nlibrary(lme4)\nlibrary(nlme)\nlibrary(JM)\n\n#load data\ndata(pbc2.id, package = 'JM')\n\npbc2.id$status2 <- as.numeric(pbc2.id$status != 'alive')\n\ncoxFit <- coxph(Surv( years, status2) ~ drug +age+ sex, data = pbc2.id)\nsummary(coxFit)\n\n#time dependent vars\ndata(prothro, package = 'JM')\n\ntdCox.pro <- coxph(Surv(start, stop, event)~ pro+treat, data = prothro)\nsummary(tdCox.pro)\n",
+    "created" : 1512051876571.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "581706307",
+    "id" : "21837874",
+    "lastKnownWriteTime" : 1512054114,
+    "last_content_update" : 1512054114207,
+    "path" : "C:/RFactory/RJointModelsTTE/TTE/survival.R",
+    "project_path" : "survival.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
